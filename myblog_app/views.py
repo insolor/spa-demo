@@ -1,7 +1,10 @@
+from django.contrib.auth import login
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 
+from myblog_app.forms import SignUpForm
 from myblog_app.models import Post
 
 
@@ -23,4 +26,23 @@ class PostDetailView(View):
         post = get_object_or_404(Post, url=slug)
         return render(request, 'myblog_app/post_detail.html', context={
             'post': post
+        })
+
+
+class SignUpView(View):
+    def get(self, request, *args, **kwargs):
+        form = SignUpForm()
+        return render(request, 'myblog_app/signup.html', context={
+            'form': form,
+        })
+
+    def post(self, request, *args, **kwargs):
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/')
+        return render(request, 'myblog_app/signup.html', context={
+            'form': form,
         })
