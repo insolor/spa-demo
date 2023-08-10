@@ -8,7 +8,7 @@ authors = ["insolor <insolor@gmail.com>"]
 python = "^3.8"
 Django = "^4.1.10"
 python-decouple = "^3.6"
-Pillow = "^9.0.1"
+Pillow = "^9.3.0"
 django-ckeditor = "^6.2.0"
 
 [tool.poetry.dev-dependencies]
