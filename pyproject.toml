@@ -6,7 +6,7 @@ authors = ["insolor <insolor@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-Django = "^4.2.11"
+Django = "^4.2.14"
 python-decouple = "^3.6"
 Pillow = "^10.3.0"
 django-ckeditor = "^6.2.0"
